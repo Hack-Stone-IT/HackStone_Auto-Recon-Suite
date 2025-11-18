@@ -73,7 +73,7 @@ We welcome contributions! Please feel free to open issues or submit pull request
 ## Contact
 
 HackStone IT – Cybersecurity & Advanced Pentesting
-Website: https://hackstone.
+Website: https://hackstone.in
 Email: hackstone2025@outlook.com
 
 ## Stay safe. Stay secure.
