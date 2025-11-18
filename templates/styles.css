@@ -1,0 +1,181 @@
+/* HackStone Auto Recon Suite - Dark Theme Stylesheet */
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #0a0a0a;
+    color: #00ffff;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid #00ffff;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #00ffff;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+header p {
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #00ffff;
+    border-bottom: 1px solid #00ffff;
+    padding-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background-color: #333;
+    color: #00ffff;
+}
+
+.vulnerability {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 5px solid;
+}
+
+.vulnerability.critical {
+    border-left-color: #ff0000;
+    background-color: #2a0a0a;
+}
+
+.vulnerability.high {
+    border-left-color: #ff6600;
+    background-color: #2a1a0a;
+}
+
+.vulnerability.medium {
+    border-left-color: #ffff00;
+    background-color: #2a2a0a;
+}
+
+.vulnerability.low {
+    border-left-color: #00ff00;
+    background-color: #0a2a0a;
+}
+
+.vulnerability h3 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #00ffff;
+    color: #888;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Vulnerability Findings Table Styles */
+.vulnerabilities-table {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    border-collapse: collapse;
+}
+
+.vulnerabilities-table th,
+.vulnerabilities-table td {
+    padding: 10px;
+    vertical-align: top;
+    border: 1px solid #ddd;
+}
+
+.vulnerabilities-table th:nth-child(1) {
+    width: 20%;
+}
+
+.vulnerabilities-table th:nth-child(2) {
+    width: 10%;
+}
+
+.vulnerabilities-table th:nth-child(3) {
+    width: 40%;
+}
+
+.vulnerabilities-table th:nth-child(4) {
+    width: 30%;
+}
+
+.vulnerabilities-table thead th {
+    background-color: #8B0000;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.vulnerabilities-table tbody tr:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.vulnerabilities-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.severity-label {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.severity-label.critical {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+.severity-label.high {
+    background-color: #ff6600;
+    color: #ffffff;
+}
+
+.severity-label.medium {
+    background-color: #ffd700;
+    color: #000000;
+}
+
+.severity-label.low {
+    background-color: #00ff00;
+    color: #000000;
+}
+
+.severity-label.info {
+    background-color: #0000ff;
+    color: #ffffff;
+}

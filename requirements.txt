@@ -1,0 +1,10 @@
+rich
+requests
+beautifulsoup4
+dnspython
+selenium
+playwright
+jinja2
+reportlab
+asyncio
+webdriver-manager

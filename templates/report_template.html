@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackStone Auto Recon Suite - Report</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>HackStone Auto Recon Suite</h1>
+        <p>Report Generated for: {{ target }}</p>
+    </header>
+
+    <section id="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>This report contains the results of an automated reconnaissance scan performed by HackStone Auto Recon Suite.</p>
+        <ul>
+            <li>Subdomains Found: {{ subdomains|length }}</li>
+            <li>Open Ports: {{ open_ports|length }}</li>
+            <li>Vulnerabilities Detected: {{ vulnerabilities|length }}</li>
+            <li>Web Vulnerabilities Detected: {{ web_vulnerabilities|length }}</li>
+            <li>Web Technologies Detected: {{ web_technologies|length }}</li>
+            <li>Subdomain Takeover Vulnerabilities: {{ subdomain_takeover|length }}</li>
+            <li>OS Fingerprint: {{ os_info }}</li>
+            <li>Directories/Files Found: {{ dir_bruteforce|length }}</li>
+        </ul>
+    </section>
+
+    <section id="subdomains">
+        <h2>Discovered Subdomains</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subdomain</th>
+                    <th>IP Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subdomain in subdomains %}
+                <tr>
+                    <td>{{ subdomain.name }}</td>
+                    <td>{{ subdomain.ip }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="ports">
+        <h2>Open Ports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Port</th>
+                    <th>Service</th>
+                    <th>Banner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for port in open_ports %}
+                <tr>
+                    <td>{{ port.number }}</td>
+                    <td>{{ port.service }}</td>
+                    <td>{{ port.banner }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="vulnerabilities">
+        <h2>Vulnerability Findings</h2>
+        <table class="vulnerabilities-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Severity</th>
+                    <th>Description</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuln in vulnerabilities %}
+                <tr>
+                    <td>{{ vuln.title }}</td>
+                    <td><span class="severity-label {{ vuln.severity.lower() }}">{{ vuln.severity }}</span></td>
+                    <td>{{ vuln.description }}</td>
+                    <td>{{ vuln.recommendation }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="os-fingerprint">
+        <h2>OS Fingerprint</h2>
+        <p>{{ os_info }}</p>
+    </section>
+
+    <section id="dir-bruteforce">
+        <h2>Directory & File Bruteforce Findings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Path</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Listing</th>
+                    <th>Sensitive</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in dir_bruteforce %}
+                <tr>
+                    <td>{{ item.path }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ 'Yes' if item.listing else 'No' }}</td>
+                    <td>{{ 'Yes' if item.sensitive else 'No' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="web-vulnerabilities">
+        <h2>Web Vulnerability Findings</h2>
+        {% if web_vulnerabilities %}
+        <table class="vulnerabilities-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>URL</th>
+                    <th>Payload</th>
+                    <th>Evidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuln in web_vulnerabilities %}
+                <tr>
+                    <td>{{ vuln.type }}</td>
+                    <td>{{ vuln.url }}</td>
+                    <td>{{ vuln.payload }}</td>
+                    <td>{{ vuln.evidence }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No web vulnerabilities detected.</p>
+        {% endif %}
+    </section>
+
+    <section id="web-technologies">
+        <h2>Web Technologies Detected</h2>
+        {% if web_technologies %}
+        <ul>
+            {% for tech in web_technologies %}
+            <li>{{ tech }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No web technologies detected.</p>
+        {% endif %}
+    </section>
+
+    <section id="subdomain-takeover">
+        <h2>Subdomain Takeover Vulnerabilities</h2>
+        {% if subdomain_takeover %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Subdomain</th>
+                    <th>CNAME</th>
+                    <th>Service</th>
+                    <th>Vulnerable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for takeover in subdomain_takeover %}
+                <tr>
+                    <td>{{ takeover.subdomain }}</td>
+                    <td>{{ takeover.cname }}</td>
+                    <td>{{ takeover.service }}</td>
+                    <td>{{ 'Yes' if takeover.vulnerable else 'No' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No subdomain takeover vulnerabilities detected.</p>
+        {% endif %}
+    </section>
+
+    <section id="screenshots">
+        <h2>Captured Screenshots</h2>
+        <div class="screenshots-gallery">
+            {% if screenshots %}
+                {% for screenshot in screenshots %}
+                <div class="screenshot-item">
+                    <h3>{{ screenshot.type|title }}: {{ screenshot.url }}</h3>
+                    <img src="{{ screenshot.path }}" alt="Screenshot of {{ screenshot.url }}" style="max-width: 100%; height: auto;">
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No screenshots captured.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <p>Report generated by HackStone Auto Recon Suite v1.0</p>
+        <p>HackStone Cybersecurity Company</p>
+    </footer>
+</body>
+</html>
