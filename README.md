@@ -1,53 +1,80 @@
-# HackStone Auto Recon Suite
+# HackStone Auto Recon Suite  
+Automated External Reconnaissance & Security Scanning Toolkit
 
-An automated reconnaissance and vulnerability scanning tool for cybersecurity professionals.
+---
 
-## Features
+## Overview  
+HackStone Auto Recon Suite is a modular, automated reconnaissance and vulnerability scanning tool designed for external security assessments. It is built for security professionals, bug bounty hunters, and pentesting teams who want to gain rapid insights into the exposure of public-facing assets.
 
-- **Subdomain Enumeration**: Discover subdomains using various techniques.
-- **Port Scanning**: Comprehensive TCP port scanning with service detection.
-- **Vulnerability Scanning**: Automated vulnerability detection and analysis.
-- **Web Vulnerability Scanning**: Safe active scanning for common web vulnerabilities (SQLi, XSS, LFI, RCE, Open Redirect).
-- **Web Technology Detection**: Identify CMS, frameworks, servers, and other web technologies.
-- **Subdomain Takeover Detection**: Check for potential subdomain takeover vulnerabilities.
-- **OS Fingerprinting**: Identify operating systems running on target hosts.
-- **Directory Bruteforce**: Discover hidden directories and files.
-- **Screenshot Capture**: Capture screenshots of discovered web assets.
-- **Report Generation**: Generate detailed HTML, PDF, and JSON reports.
+---
 
-## Installation
+## Key Features  
+- **Subdomain Enumeration** – DNS brute force, permutation scanning, wildcard detection & takeover checks  
+- **Full TCP Port Scan (1–65535)** – Threaded scanning, banner grabbing, intelligent service detection  
+- **Web Technology Detection** – Identify CMS, frameworks, servers, CDNs, JS libraries  
+- **Directory & File Bruteforce** – Detect sensitive paths, hidden directories, backup files  
+- **Active Web Vulnerability Tests (Safe Mode)** – SQLi (non-destructive), XSS reflection, LFI checks, open-redirect tests, RCE indicators  
+- **Screenshot Capture** – Headless browser snapshots of domains, subdomains & endpoints  
+- **Professional Reporting** – Generates HTML & PDF reports + JSON data export with HackStone branding  
+- **Modular & Extensible** – Designed to be extended with additional modules and plugins  
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hackstone/hackstone-auto-recon.git
-   cd hackstone-auto-recon
-   ```
+---
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Tech Stack  
+- Python 3.x  
+- `requests`, `dnspython`, `scapy`  
+- `beautifulsoup4`, `selenium` / `playwright`  
+- `jinja2` for HTML templates  
+- `pdfkit` / `reportlab` for PDF generation  
+- `rich` for CLI interface  
+- Threading / asyncio for performance  
 
-3. Run the tool:
-   ```bash
-   python hackstone_auto_recon.py --target example.com
-   ```
+---
 
-## Usage
-
+## Installation  
 ```bash
-python hackstone_auto_recon.py --target <target_domain>
+git clone https://github.com/Hack-Stone-IT/HackStone_Auto-Recon-Suite.git  
+cd HackStone_Auto-Recon-Suite  
+pip install -r requirements.txt  
 ```
 
-## Requirements
+## Usage
+```bash
+python3 hackstone_auto_recon.py --target example.com
+```
+Options:
 
-- Python 3.7+
-- Required Python packages (see requirements.txt)
+--target : Target domain or IP
 
-## Disclaimer
+--output : (Optional) Output folder or report prefix
 
-This tool is intended for educational and authorized security testing purposes only. Use responsibly and with permission.
+--threads : (Optional) Number of threads to use
 
-## License
+## Output Structure
+```bash
+/reports/
+  └── example.com/
+       ├── report.html  
+       ├── report.pdf  
+       ├── results.json  
+       ├── screenshots/  
+       └── logs/
+```
+## License & Terms
 
-MIT License - see LICENSE file for details.
+All Rights Reserved — HackStone IT
+This tool is provided for authorized testing only.
+Do not use it against unauthorized targets.
+
+## Contributing
+
+We welcome contributions! Please feel free to open issues or submit pull requests for improvements, additional modules, or bug fixes.
+
+## Contact
+
+HackStone IT – Cybersecurity & Advanced Pentesting
+Website: https://hackstone.
+Email: hackstone2025@outlook.com
+
+## Stay safe. Stay secure.
+– HackStone IT Team
