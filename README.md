@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://hackstone.in/logo.png" alt="HackStone Logo" width="120"/>
+<img src="[https://hackstone.in/logo.png](https://drive.google.com/file/d/1GqIKWxda1FDHdEV8Mwe4H3FMygbpjgu7/view?usp=sharing)" alt="HackStone Logo" width="120"/>
 
 # HackStone Auto Recon Suite
 
